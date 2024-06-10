@@ -1,0 +1,11 @@
+.example-container {
+  flex: 1;
+}
+
+.mat-drawer {
+  width: 180px !important;
+}
+
+.mat-expansion-panel-header {
+  height: 30px !important;
+}

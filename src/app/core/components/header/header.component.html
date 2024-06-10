@@ -1,0 +1,31 @@
+<mat-toolbar *ngIf="(header_options$ | async) as header_options " color="primary" style="display: flex;flex-direction: row;align-items: center;justify-content: space-between;background: linear-gradient(to right, #00c5fb 0%, #0253cc 100%) !important;">
+  <div style="display: flex;flex-direction: row;align-items: center;">
+    <button *ngIf="header_options.user" mat-icon-button (click)="this.side.emit(true);menu.emit(header_options.menu)"
+      class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>My App</span>
+  </div>
+  <div style="display: flex;flex-direction: row;align-items: center;">
+    <div *ngIf="header_options.user" style="color: white !important;">{{header_options.user.email}}</div>
+    <div *ngIf="header_options.show_user_menu">
+      <button type="button" mat-icon-button [matMenuTriggerFor]="menuUsr" style="color: white !important;">
+        <mat-icon>person</mat-icon>
+      </button>
+      <mat-menu #menuUsr="matMenu" [overlapTrigger]="false">
+        <button type="button" mat-menu-item (click)="showMyProfile()">
+          <mat-icon>person_outline</mat-icon>
+          <span>My Profile</span>
+        </button>
+        <button type="button" mat-menu-item (click)="showChangePassword()">
+          <mat-icon>lock</mat-icon>
+          <span>Change Password</span>
+        </button>
+        <button mat-menu-item [routerLink]="['/login']">
+          <mat-icon>power_settings_new</mat-icon>
+          <span>Logout</span>
+        </button>
+      </mat-menu>
+    </div>
+  </div>
+</mat-toolbar>

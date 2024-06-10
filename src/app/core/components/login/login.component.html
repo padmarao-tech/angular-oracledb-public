@@ -1,0 +1,47 @@
+<div style="display: flex;flex-direction: row;justify-content: end;">
+    <mat-card style="margin: 1%;">
+        <mat-card-header>
+            <mat-card-title>
+                Login
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <form [formGroup]="fg" autocomplete="off">
+                <div style="margin: 5%;display: flex;flex-direction: column;">
+                    <mat-form-field>
+                        <mat-label>Username</mat-label>
+                        <input type="text" matInput formControlName="mobile_no_email" autocomplete="off">
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label>Password</mat-label>
+                        <input type="{{view?'text':'password'}}" matInput formControlName="pwd" autocomplete="off">
+                        <mat-icon *ngIf="!view" (click)="view=true" matSuffix color="primary"
+                            style="cursor: pointer;">visibility</mat-icon>
+                        <mat-icon *ngIf="view" (click)="view=false" matSuffix color="primary"
+                            style="cursor: pointer;">visibility_off</mat-icon>
+                    </mat-form-field>
+                    <button class="grow" (click)="Login()" mat-raised-button color="primary">Login</button>
+                    <!-- <div class="flex "> -->
+                    <div class="grow"></div>
+                    <div>
+                        <button mat-button (click)="showChangePassword()">Forgot Password</button>
+                    </div>
+                    <!-- </div> -->
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+    <mat-accordion>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                Select User for Demonstration
+            </mat-expansion-panel-header>
+            <div style="display: flex;flex-direction: column;">
+                <h3>Head Office</h3>
+                <div style="cursor: pointer;" (click)="loginAs(1)">1) Administrator</div>
+                <div style="cursor: pointer;" (click)="loginAs(11)">1) Tester</div>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>

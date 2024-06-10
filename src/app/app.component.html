@@ -1,0 +1,14 @@
+<header (side)="triggerSide()" (menu)="getMenu($event)"></header>
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="over" #matDrawer>
+    <div *ngIf="menu && menu.length > 0" color="primary" class="example-headers-align" multi style="display: flex;flex-direction: column;">
+      <app-sidenav [menuArray]="menu" (side)="triggerSide()"></app-sidenav>
+    </div>
+  </mat-drawer>
+  <mat-drawer-content>
+    <router-outlet />
+  </mat-drawer-content>
+</mat-drawer-container>
+<footer>
+  <app-footer></app-footer>
+</footer>
