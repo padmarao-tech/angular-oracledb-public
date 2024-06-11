@@ -3,18 +3,21 @@ import { provideRouter, withHashLocation } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { HttpClientModule } from '@angular/common/http';
 
 import { appRequestInterceptorProvider } from './core/interceptors/request.interceptor';
 import { appResponseInterceptorProvider } from './core/interceptors/response.interceptor';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideRouter(routes, withHashLocation()), 
+    provideRouter(routes, withHashLocation()),
     provideAnimationsAsync(),
-    importProvidersFrom(HttpClientModule),
-    appRequestInterceptorProvider,
-    appResponseInterceptorProvider,
-    
+    provideHttpClient(
+      withInterceptors([
+        appRequestInterceptorProvider,
+        appResponseInterceptorProvider,
+      ])
+    )
+
   ]
 };

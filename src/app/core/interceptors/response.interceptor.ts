@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { HttpEvent, HttpHeaders, HttpInterceptor, HTTP_INTERCEPTORS, HttpHandler, HttpRequest, HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import { Injectable, inject } from '@angular/core';
+import { HttpEvent, HttpHeaders, HttpInterceptor, HTTP_INTERCEPTORS, HttpHandler, HttpRequest, HttpResponse, HttpErrorResponse, HttpInterceptorFn, HttpHandlerFn } from '@angular/common/http';
 import { NavigationEnd, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable, throwError } from 'rxjs';
@@ -8,8 +8,11 @@ import { map, catchError } from 'rxjs/operators';
 import { DataService } from '../services/data.service';
 import { MatDialog } from '@angular/material/dialog';
 
-@Injectable()
-export class AppResponseInterceptor implements HttpInterceptor {
+@Injectable({
+  providedIn: 'root'
+})
+
+export class AppResponseInterceptor {
   constructor(
     private dataService: DataService,
     private router: Router,
@@ -17,9 +20,8 @@ export class AppResponseInterceptor implements HttpInterceptor {
     private dialog: MatDialog
   ) { }
 
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    // next.handle(req).forEach()
-    let ret = next.handle(req)
+  intercept(req: HttpRequest<any>, next: HttpHandlerFn): Observable<HttpEvent<any>> {
+    let ret = next(req)
       .pipe(
         map((event: HttpEvent<any>) => {
 
@@ -84,8 +86,7 @@ export class AppResponseInterceptor implements HttpInterceptor {
   }
 }
 
-export const appResponseInterceptorProvider = {
-  provide: HTTP_INTERCEPTORS,
-  useClass: AppResponseInterceptor,
-  multi: true
-};
+export const appResponseInterceptorProvider: HttpInterceptorFn = (req, next) => {
+  let http = inject(AppResponseInterceptor);
+  return http.intercept(req, next);
+}
