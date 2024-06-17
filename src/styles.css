@@ -1,5 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 @import "@angular/material/prebuilt-themes/indigo-pink.css";
+/* #region Materials */
+@import url("./assets/materials/check-box.css");
+@import url("./assets/materials/form-field.css");
+@import url("./assets/materials/input.css");
+@import url("./assets/materials/menu.css");
+@import url("./assets/materials/paginator.css");
+@import url("./assets/materials/side-nav.css");
+@import url("./assets/materials/table.css");
+@import url("./assets/materials/tree.css");
+/* #endregion Materials */
 
 html,
 body {
@@ -10,158 +20,3 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
-
-/*#region MatFormField */
-.mat-mdc-form-field {
-  width: 230px !important;
-}
-.mdc-text-field {
-  padding: 0px !important;
-}
-.mat-mdc-form-field-infix {
-  min-height: auto !important;
-  padding-bottom: 0px !important;
-}
-
-.mat-mdc-text-field-wrapper:not(.mdc-text-field--outlined)
-  .mat-mdc-form-field-infix {
-  padding-top: 18px;
-  padding-bottom: 0px;
-}
-
-.mat-mdc-form-field-infix {
-  width: auto;
-  min-height: 26px;
-}
-
-.mdc-text-field--filled:not(.mdc-text-field--disabled) {
-  background-color: transparent !important;
-}
-.mdc-text-field--filled {
-  height: auto !important;
-}
-.mat-mdc-form-field-focus-overlay {
-  background-color: transparent !important;
-}
-.label-text-wrapper {
-  margin-bottom: 5px !important;
-}
-
-.mat-mdc-form-field {
-  /* line-height: 10px !important; */
-  letter-spacing: 0px;
-  font-size: 14px !important;
-  font-weight: 400 !important;
-}
-.mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-floating-label {
-  top: 30px;
-}
-.mdc-floating-label--float-above {
-  font-size: 16px !important;
-}
-.mdc-text-field__input {
-  height: 26px !important;
-}
-.mat-mdc-form-field-hint-wrapper,
-.mat-mdc-form-field-error-wrapper {
-  padding: 0px !important;
-}
-/*#endregion MatFormField */
-
-/*#region Table */
-
-table,
-th,
-td {
-  border: 1px solid #737373;
-}
-
-table {
-  width: 100%;
-  overflow-x: scroll;
-  min-width: 400px;
-  border-collapse: collapse;
-}
-
-thead {
-  background: ghostwhite;
-  line-height: 30px;
-}
-
-td {
-  padding: 0px 4px;
-}
-/*#endregion Table */
-
-/*#region input */
-
-input {
-  min-height: 20px !important;
-  --min-height: 40px !important;
-  font-size: 16px !important;
-  width: 100%;
-  outline: 0;
-  --border-color: rgba(0, 0, 0, 0.15);
-  --border-style: solid;
-  --border-width: 1px;
-  border-color: rgba(0, 0, 0, 0.15);
-  border-style: solid;
-  border-width: 1px;
-  border: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
-  --border-radius: 0px;
-  --padding-start: 0px;
-  --padding-end: 0px;
-}
-/*#endregion input */
-
-/*#region Checkbox */
-.example-section {
-  display: flex;
-  align-content: center;
-  align-items: center;
-  height: 60px;
-}
-
-.example-margin {
-  margin: 0 10px;
-}
-/*#endregion Checkbox */
-
-/*#region Paginator */
-.mat-mdc-paginator {
-  background-color: transparent !important;
-}
-
-.mat-mdc-option,
-.mat-mdc-menu-item {
-  min-height: 30px !important;
-}
-
-.mat-mdc-paginator-page-size-select {
-  width: 84px !important;
-}
-/*#endregion Paginator */
-
-/*#region Menu */
-.mat-mdc-menu-item {
-  min-height: 30px !important;
-}
-/*#endregion Menu */
-
-/*#region SideNav */
-.mat-drawer {
-  background-color: #34444c !important;
-}
-
-.active-link {
-  background-color: rgba(0, 0, 0, 0.2) !important;
-  color: rgb(36, 187, 233) !important;
-}
-/*#endregion */
-
-/*#region Tree */
-.mat-tree {
-  background-color: #34444c !important;
-}
-/*#region Tree */
